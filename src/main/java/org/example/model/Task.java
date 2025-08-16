@@ -1,6 +1,7 @@
 package org.example.model;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class Task implements Comparable<Task> {
@@ -17,7 +18,7 @@ public class Task implements Comparable<Task> {
         this.priority = priority;
         this.done = false;
         this.id = counter.incrementAndGet();
-        this.tasks = new HashSet<>();
+        this.tasks = new TreeSet<>();
     }
 
     public void addTask(Task task) {
@@ -69,5 +70,18 @@ public class Task implements Comparable<Task> {
             return 1;
         }
         return 0;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+
+        if (other instanceof Task) {
+            return this.id == ((Task) other).id &&  this.title.equals(((Task) other).title) &&   this.priority == ((Task) other).priority;
+
+        }
+        return false;
     }
 }

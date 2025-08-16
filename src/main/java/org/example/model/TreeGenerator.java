@@ -1,9 +1,6 @@
 package org.example.model;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class TreeGenerator {
     public static Task treeGenerator(int elements) {
