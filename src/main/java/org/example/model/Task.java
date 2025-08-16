@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class Task {
+public class Task implements Comparable<Task> {
     private long id;
     private String title;
     private int priority;
@@ -59,5 +59,15 @@ public class Task {
     @Override
     public String toString() {
         return "[" + "id: " + id + ", priority: " + priority + ", done: " + done + "]";
+    }
+
+    @Override
+    public int compareTo(Task other) {
+        if (this.priority < other.priority) {
+            return -1;
+        } else if (this.priority > other.priority) {
+            return 1;
+        }
+        return 0;
     }
 }
